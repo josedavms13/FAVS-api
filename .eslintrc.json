@@ -30,6 +30,7 @@
       "error",
       "always"
     ],
+    "new-cap": "off",
     "require-jsdoc": [
       "error",
       {
