@@ -13,14 +13,14 @@ export class FavList extends Model<FavList, FavListAttributes> {
       type: DataType.INTEGER,
       allowNull: false,
    })
-   declare userId: string;
+   declare userId: number;
 
    @HasMany(() => Fav, {
       foreignKey: "favListId",
    })
-   declare favLists: FavList[];
+   declare favLists: Fav[];
 }
 
 export interface FavListAttributes {
-   userId: string;
+   userId: number;
 }
