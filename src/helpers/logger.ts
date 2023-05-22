@@ -37,6 +37,10 @@ class Logger {
       this.logger.trace(message);
    }
 
+   public warn(message: string | any) {
+      this.logger.warn(message);
+   }
+
    public success(message: string) {
       console.log(`\t ======== ${ message.toUpperCase() } ========`);
       this.logger.info(`\t ======== ${ message.toUpperCase() } ========`);

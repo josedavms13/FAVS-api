@@ -1,7 +1,11 @@
-// @ts-ignore
-import {Column, DataType, HasMany, Model, Table} from "sequelize-typescript";
 import {Fav} from "./Fav";
-
+import {
+   Column,
+   DataType,
+   HasMany,
+   Model,
+   Table,
+} from "sequelize-typescript/dist";
 
 @Table
 export class User extends Model<User, UserAttributes> {
