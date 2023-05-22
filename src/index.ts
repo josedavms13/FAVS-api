@@ -1,9 +1,8 @@
 import "dotenv/config";
-import express, {} from "express";
+import express from "express";
 import cors from "cors";
 import {getLogger} from "./helpers/logger";
 import {doDBConnection} from "./DB";
-import bodyParser from "body-parser";
 import routes from "./routes";
 import {Environments} from "./DB/config/enums";
 import {getEnvironment} from "./DB/config/dbConfig";
@@ -13,16 +12,14 @@ const logger = getLogger("INDEX");
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+// @ts-ignore
+app.use(express.json());
+// @ts-ignore
+app.use(express.urlencoded({extended: true}));
 app.use("/api", routes);
 
 const port = Number(process.env.PORT);
 const isReset = process.argv[2] === "--reset";
-export const isTest = process.argv[2] === "--test";
-
-const RESET_DB_ON_START = false;
-
 
 (async function() {
    if (isReset && getEnvironment() === Environments.development) {
@@ -31,7 +28,7 @@ const RESET_DB_ON_START = false;
    } else {
       let successfulConnection = false;
       try {
-         successfulConnection = await doDBConnection(RESET_DB_ON_START);
+         successfulConnection = await doDBConnection(isReset);
       } catch (e) {
          logger.error("Couldn't connect to DB'");
          logger.error(e);

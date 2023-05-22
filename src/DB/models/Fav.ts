@@ -1,8 +1,11 @@
-// @ts-ignore
-
-
-import {BelongsTo, Column, DataType, Model, Table} from "sequelize-typescript";
-import {User} from "./User";
+import {
+   BelongsTo,
+   Column,
+   DataType,
+   Model,
+   Table,
+} from "sequelize-typescript/dist";
+import {FavList} from "./FavList";
 
 @Table
 export class Fav extends Model<Fav, FavAttributes> {
@@ -30,10 +33,10 @@ export class Fav extends Model<Fav, FavAttributes> {
    })
    declare favListId: number;
 
-   @BelongsTo(() => User, {
-      foreignKey: "userId",
+   @BelongsTo(() => FavList, {
+      foreignKey: "favListId",
    })
-   declare user: User;
+   declare user: FavList;
 }
 
 export interface FavAttributes {

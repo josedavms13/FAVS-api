@@ -6,12 +6,14 @@ import {getFileName} from "../../utils/filePathTools";
 import {ModelCtor} from "sequelize-typescript";
 import {User} from "./User";
 import {Fav} from "./Fav";
+import {FavList} from "./FavList";
 
 const logger = getLogger("MODELS - INDEX");
 
 export const models: tModelCheck[] = [
    {model: User, name: "User"},
    {model: Fav, name: "Fav"},
+   {model: FavList, name: "FavList"},
 ];
 
 type tModelCheck = {
