@@ -1,5 +1,6 @@
 export interface BulkCreateFavRequirements {
    favListId?: number,
+   favListName: string,
    userId: number,
    favs: Fav[]
 }

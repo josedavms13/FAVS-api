@@ -15,6 +15,12 @@ export class FavList extends Model<FavList, FavListAttributes> {
    })
    declare userId: number;
 
+   @Column({
+      type: DataType.STRING,
+      allowNull: false,
+   })
+   declare name: string;
+
    @HasMany(() => Fav, {
       foreignKey: "favListId",
    })
@@ -22,5 +28,6 @@ export class FavList extends Model<FavList, FavListAttributes> {
 }
 
 export interface FavListAttributes {
+   name: string;
    userId: number;
 }

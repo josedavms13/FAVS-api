@@ -34,12 +34,14 @@ export async function createFav(data: FavAttributes): Promise<tDBResult> {
  * Will create a new favList to be assigned to all created Favs
  * @param {Fav[]} favs
  * @param {number?} favListId
+ * @param {string} favListName
  * @param {number} userId
  */
 export async function bulkCreateFav({
    favs,
    favListId,
    userId,
+   favListName,
 }: BulkCreateFavRequirements)
    : Promise<tDBResult> {
    logger.log("Creating bulk Favs");
@@ -63,6 +65,7 @@ export async function bulkCreateFav({
       if (!favListId) {
          const favListCreated = await createFavList({
             userId: userId,
+            name: favListName,
          });
          if (!favListCreated.success) {
             logger.error("Fav creation failed");
