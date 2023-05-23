@@ -1,8 +1,18 @@
 export interface BulkCreateFavRequirements {
-   favListId?: number,
+   favs: Fav[],
+   favListReq: tFavListRequirement
+}
+
+export type tFavListRequirement = ExistingFavList | NewFavList
+
+export interface ExistingFavList {
+   favListId: number
+}
+
+export interface NewFavList {
    favListName: string,
    userId: number,
-   favs: Fav[]
+   favListId: undefined
 }
 
 interface Fav {
@@ -12,6 +22,8 @@ interface Fav {
 }
 
 export interface BulkCreateFavRequest {
-   favs: Fav[];
-   userId: number,
+   favs: Fav[],
+   favListName?: string,
+   favListId?: number
+   userId?: number,
 }

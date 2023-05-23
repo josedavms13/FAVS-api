@@ -6,7 +6,7 @@ import {FavList, FavListAttributes} from "../../../DB/models/FavList";
 const logger = getLogger("FAV_LIST | DOMAIN | CREATE");
 
 export async function createFavList(data: FavListAttributes)
-   : Promise<tDBResult> {
+   : Promise<tDBResult<FavList>> {
    logger.log("Creating new favList");
    try {
       const createdFavList = await FavList.create(data);

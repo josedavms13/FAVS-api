@@ -5,7 +5,7 @@ import {tDBResult} from "../../../types/domain/domain.types";
 
 const logger = getLogger("USER | DOMAIN | GET");
 
-export async function getUser(userId: number): Promise<tDBResult> {
+export async function getUser(userId: number): Promise<tDBResult<User>> {
    logger.log(`Verifying if user ${ userId } exists`);
    try {
       const retrievedUser = await User.findOne({

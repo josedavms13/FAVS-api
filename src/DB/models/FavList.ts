@@ -1,4 +1,5 @@
 import {
+   BelongsTo,
    Column,
    DataType,
    HasMany,
@@ -6,6 +7,7 @@ import {
    Table,
 } from "sequelize-typescript/dist";
 import {Fav} from "./Fav";
+import {User} from "./User";
 
 @Table
 export class FavList extends Model<FavList, FavListAttributes> {
@@ -14,6 +16,11 @@ export class FavList extends Model<FavList, FavListAttributes> {
       allowNull: false,
    })
    declare userId: number;
+
+   @BelongsTo(() => User, {
+      foreignKey: "userId",
+   })
+   declare user: User;
 
    @Column({
       type: DataType.STRING,

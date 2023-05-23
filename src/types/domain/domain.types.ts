@@ -1,12 +1,12 @@
-export type tDBResult = DBSuccess | DBFailure;
+export type tDBResult<T> = DBSuccess<T> | DBFailure;
 
 
-interface DBSuccess {
+interface DBSuccess <T>{
    success: true;
-   dbData: any;
+   dbData: T;
 }
 
-interface DBFailure {
+export interface DBFailure {
    success: false,
    reason: any,
    message?: string,
