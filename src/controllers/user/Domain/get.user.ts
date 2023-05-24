@@ -49,6 +49,7 @@ export async function getUserByUserName(userName: string)
             reason: "User not found",
          };
       }
+      foundUser.password = "***********";
       logger.log("User found");
       return {
          success: true,

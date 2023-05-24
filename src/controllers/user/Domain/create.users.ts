@@ -16,6 +16,7 @@ export async function createUser(data: UserAttributes)
          password: await getEncrypted(data.password),
       };
       const createdUser = await User.create(userToCreate);
+      createdUser.password = "************";
       logger.success("User created successfully");
       return {
          success: true,

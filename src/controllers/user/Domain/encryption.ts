@@ -1,10 +1,11 @@
 import bcrypt from "bcrypt";
-import "dotenv.config";
+import "dotenv/config";
 
 const salt = process.env.ENCRYPT_SALT!;
 
 export async function getEncrypted(password: string): Promise<string> {
-   return await bcrypt.hash(password, salt);
+   console.log(salt);
+   return await bcrypt.hash(password, Number(salt));
 }
 
 export async function compareHash(givenPassword: string, userPassword: string)

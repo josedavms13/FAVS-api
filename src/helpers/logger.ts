@@ -11,8 +11,7 @@ class Logger {
             app: {type: "file", filename: "application.log"},
          },
          categories: {
-            default: {appenders: ["out"], level: "trace"},
-            app: {appenders: ["app"], level: "trace"},
+            default: {appenders: ["out", "app"], level: "debug"},
          },
       });
       this.logger = log4js.getLogger(category);
