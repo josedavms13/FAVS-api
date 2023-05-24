@@ -32,3 +32,33 @@ export async function getUser(userId: number): Promise<tDBResult<User>> {
       };
    }
 }
+
+export async function getUserByUserName(userName: string)
+   : Promise<tDBResult<User>> {
+   logger.log("Getting user by username)");
+   try {
+      const foundUser = await User.findOne({
+         where: {
+            name: userName,
+         },
+      });
+      if (!foundUser) {
+         logger.warn("User not found");
+         return {
+            success: false,
+            reason: "User not found",
+         };
+      }
+      logger.log("User found");
+      return {
+         success: true,
+         dbData: foundUser,
+      };
+   } catch (e) {
+      logger.error(e);
+      return {
+         success: false,
+         reason: e,
+      };
+   }
+}
