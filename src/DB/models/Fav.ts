@@ -6,6 +6,7 @@ import {
    Table,
 } from "sequelize-typescript/dist";
 import {FavList} from "./FavList";
+import {User} from "./User";
 
 @Table
 export class Fav extends Model<Fav, FavAttributes> {
@@ -31,12 +32,23 @@ export class Fav extends Model<Fav, FavAttributes> {
       type: DataType.INTEGER,
       allowNull: false,
    })
+   declare userId: number;
+
+   @BelongsTo(() => User, {
+      foreignKey: "userId",
+   })
+   declare user: User;
+
+   @Column({
+      type: DataType.INTEGER,
+      allowNull: false,
+   })
    declare favListId: number;
 
    @BelongsTo(() => FavList, {
       foreignKey: "favListId",
    })
-   declare user: FavList;
+   declare favList: FavList;
 }
 
 export interface FavAttributes {
@@ -44,4 +56,5 @@ export interface FavAttributes {
    description: string;
    link: string;
    favListId: number;
+   userId: number;
 }

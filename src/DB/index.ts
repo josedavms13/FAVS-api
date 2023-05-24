@@ -13,6 +13,7 @@ const sequelize = new Sequelize({
    password: getDbConfig().password,
    port: getDbConfig().port,
    username: getDbConfig().username,
+   logging: false,
 } as SequelizeOptions,
 );
 
